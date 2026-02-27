@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EAEAEA"
-    tools:context=".activity_sign_in">
+    tools:context=".activity_reg_in">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -27,7 +27,6 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        Top
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -70,7 +69,7 @@
             android:layout_height="wrap_content"
             android:text="Пароль:"
             android:textColor="#80000000"
-            android:textSize="15sp"
+            android:textSize="15sp"/>
 
         <EditText
             android:id="@+id/et_password"
@@ -83,7 +82,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/bth_open_sign_in"
+        android:id="@+id/bth_open_reg_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Еще не зарегистрированы?"
@@ -106,5 +105,5 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
