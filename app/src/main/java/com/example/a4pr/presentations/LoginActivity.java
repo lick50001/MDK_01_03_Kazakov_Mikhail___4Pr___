@@ -1,13 +1,19 @@
 package com.example.a4pr.presentations;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a4pr.R;
+import com.example.a4pr.datas.apis.UserLogin;
+import com.example.a4pr.datas.common.CheckInternet;
+import com.example.a4pr.domains.callbacks.MyResponseCallback;
+import com.example.a4pr.domains.models.User;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -42,7 +48,34 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            Toast.makeText(this, "Пользователь авторизован", Toast.LENGTH_SHORT).show();
+            RequestUserLogin(email, password);
         });
+    }
+
+    public void RequestUserLogin(String email, String password, String firstname, String lastname, String surname, Integer gender){
+        Context context = this;
+        CheckInternet checkInternet = new CheckInternet(this);
+
+        User User = new User();
+        User.email = email;
+        User.password = password;
+
+        UserLogin RequestUserLogin = new UserLogin(
+                User,
+                checkInternet,
+                new MyResponseCallback() {
+                    @Override
+                    public void onCompile(String result){
+                        Log.d("USER LOGIN", result);
+                        Toast.makeText(context, "Успешная авторизация пользователя", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(String error){
+                        Log.d("USER LOGIN", error);
+                        Toast.makeText(context, "При авторизации возникли ошибки", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
     }
 }

@@ -129,7 +129,7 @@
             android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/patronymic"
+            android:id="@+id/lastnamyc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Иванович"
@@ -157,7 +157,7 @@
             android:textSize="15sp" />
 
         <Spinner
-            android:id="@+id/sex"
+            android:id="@+id/gendery"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:entries="@array/genders"

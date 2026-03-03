@@ -24,8 +24,8 @@ public class RegInActivity extends AppCompatActivity {
         EditText Password = findViewById(R.id.et_password);
         EditText Surname = findViewById(R.id.surname);
         EditText Name = findViewById(R.id.name);
-        EditText Patrom = findViewById(R.id.patronymic);
-        Spinner Sex = findViewById(R.id.sex);
+        EditText Lastname = findViewById(R.id.lastnamyc);
+        Spinner Gender = findViewById(R.id.gendery);
 
         TextView bthOpenLogIn = findViewById(R.id.bth_open_sign_in);
         bthOpenLogIn.setOnClickListener(v -> {
@@ -39,8 +39,8 @@ public class RegInActivity extends AppCompatActivity {
             String password = Password.getText().toString();
             String surname = Surname.getText().toString();
             String name = Name.getText().toString();
-            String patrom = Patrom.getText().toString();
-            //String sex = Sex.getText().toString();
+            String lastname = Lastname.getText().toString();
+            //String gender = Gender.getText().toString();
 
             if (email.isEmpty()) {
                 Toast.makeText(this, "Не указана почта пользователя", Toast.LENGTH_SHORT).show();
@@ -62,7 +62,7 @@ public class RegInActivity extends AppCompatActivity {
                 return;
             }
 
-            if (patrom.isEmpty()) {
+            if (lastname.isEmpty()) {
                 Toast.makeText(this, "Не указано отчество пользователя", Toast.LENGTH_SHORT).show();
                 return;
             }

@@ -2,8 +2,8 @@ package com.example.a4pr.domains.models;
 
 public class User {
     public Integer id;
-    public  String email;
-    public  String password;
+    public static String email;
+    public static String password;
     public  String firstname;
     public  String lastname;
     public  String surname;
