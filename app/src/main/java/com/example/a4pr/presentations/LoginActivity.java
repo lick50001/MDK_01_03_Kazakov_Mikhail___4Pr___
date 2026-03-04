@@ -14,6 +14,7 @@ import com.example.a4pr.datas.apis.UserLogin;
 import com.example.a4pr.datas.common.CheckInternet;
 import com.example.a4pr.domains.callbacks.MyResponseCallback;
 import com.example.a4pr.domains.models.User;
+import com.google.gson.GsonBuilder;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -52,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void RequestUserLogin(String email, String password, String firstname, String lastname, String surname, Integer gender){
+    public void RequestUserLogin(String email, String password){
         Context context = this;
         CheckInternet checkInternet = new CheckInternet(this);
 
@@ -68,6 +69,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void onCompile(String result){
                         Log.d("USER LOGIN", result);
                         Toast.makeText(context, "Успешная авторизация пользователя", Toast.LENGTH_SHORT).show();
+
+                        User AuthUser = new GsonBuilder().create().fromJson(result, User.class);
                     }
 
                     @Override

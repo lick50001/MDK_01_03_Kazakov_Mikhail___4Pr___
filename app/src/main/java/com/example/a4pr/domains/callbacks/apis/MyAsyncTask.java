@@ -22,7 +22,7 @@ public class MyAsyncTask extends AsyncTask<Void, Void, String> {
 
         if (callback != null){
             if (result != null && !result.startsWith("Error"))
-                callback.onComputer(result);
+                callback.onCompile(result);
             else
                 callback.onError(result);
         }
