@@ -80,5 +80,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
         );
+        RequestUserLogin.execute();
     }
 }

@@ -40,9 +40,23 @@ public class RegInActivity extends AppCompatActivity {
             String surname = etSurname.getText().toString().trim();
             String name = etName.getText().toString().trim();
             String lastname = etLastname.getText().toString().trim();
-            String gender = spinnerGender.getSelectedItem() != null
-                    ? spinnerGender.getSelectedItem().toString() : "";
 
+            // Конвертируем позицию спиннера в числовое значение для сервера
+            int genderValue;
+            int position = spinnerGender.getSelectedItemPosition();
+
+            switch (position) {
+                case 0:
+                    genderValue = 0; // Не выбрано / Другое
+                    break;
+                case 1:
+                    genderValue = 1; // Мужской
+                    break;
+                default:
+                    genderValue = 0; // Значение по умолчанию
+            }
+
+            // Валидация полей
             if (email.isEmpty()) {
                 Toast.makeText(this, "Не указана почта", Toast.LENGTH_SHORT).show();
                 return;
@@ -56,12 +70,15 @@ public class RegInActivity extends AppCompatActivity {
                 return;
             }
 
-            registerUser(email, password, surname, name, lastname, gender);
+            // Вызываем регистрацию, передавая genderValue как int
+            registerUser(email, password, surname, name, lastname, genderValue);
         });
     }
 
+    // Метод теперь принимает int gender вместо String
     private void registerUser(String email, String password, String surname,
-                              String name, String lastname, String gender) {
+                              String name, String lastname, int gender) {
+
         CheckInternet checkInternet = new CheckInternet(this);
 
         User user = new User();
@@ -70,7 +87,7 @@ public class RegInActivity extends AppCompatActivity {
         user.surname = surname;
         user.firstname = name;
         user.lastname = lastname;
-        user.gender = gender;  // ← ДОБАВЛЕНО
+        user.gender = gender;  // ← Присваиваем int напрямую, без парсинга
 
         UserCreate userCreate = new UserCreate(user, checkInternet, new MyResponseCallback() {
             @Override

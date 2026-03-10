@@ -19,7 +19,7 @@ public class User {
     public String surname;
 
     @SerializedName("gender")
-    public String gender;
+    public int gender;
 
     // Поле для токена (вернётся при логине)
     @SerializedName("token")
